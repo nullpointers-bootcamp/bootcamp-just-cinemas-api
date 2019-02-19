@@ -32,6 +32,6 @@ public class MovieServiceTest {
     @Test
     public void shouldReturnNowShowingMovies() {
         List<Movie> movies = movieService.getNowShowingMovies();
-        Assert.assertEquals("Should fetch now showing movies", 6, movies.size());
+        Assert.assertEquals("Should fetch now showing movies", 15, movies.size());
     }
 }

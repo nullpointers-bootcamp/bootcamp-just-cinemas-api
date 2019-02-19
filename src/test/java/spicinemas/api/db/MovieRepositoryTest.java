@@ -25,7 +25,7 @@ public class MovieRepositoryTest {
     @Test
     public void shouldReturnAllMoviesWithListingTypeNowShowing(){
         List<DBMovie> movies = movieRepo.getNowShowingMovies();
-        Assert.assertEquals("Total now showing movies should be 6",6, movies.size());
+        Assert.assertEquals("Total now showing movies should be 6",15, movies.size());
     }
 
     @Test

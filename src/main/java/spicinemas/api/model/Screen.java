@@ -3,10 +3,10 @@ package spicinemas.api.model;
 import java.util.List;
 
 public class Screen {
-    String name;
-    String screenExperience;
-    String isActive;
-    List<Show> shows;
+    private String name;
+    private String screenExperience;
+    private String isActive;
+    private List<Show> shows;
 
    public Screen(String name, String screenExperience, String isActive, List<Show> shows) {
         this.name = name;

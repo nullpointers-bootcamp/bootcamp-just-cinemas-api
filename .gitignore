@@ -121,3 +121,6 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 src/main/generated
+
+#talismanrc
+.talismanrc

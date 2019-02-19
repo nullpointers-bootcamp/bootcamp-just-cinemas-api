@@ -8,15 +8,26 @@ public class Movie {
     private String name;
     private String experiences;
     private MovieListingType listingType;
+    private Language language;
+    String imageName;
+    String stills;
+    String synopsis;
 
-    public Movie(String name, String experiences, MovieListingType listingType) {
+
+    public Movie(Long id, String name, String experiences, MovieListingType listingType, Language language, String imageName, String stills, String synopsis) {
+        this.id = id;
         this.name = name;
         this.experiences = experiences;
         this.listingType = listingType;
+        this.language = language;
+        this.imageName = imageName;
+        this.stills = stills;
+        this.synopsis = synopsis;
     }
 
-    public Movie() {
 
+    public Language getLanguage() {
+        return language;
     }
 
     public Long getId() {
@@ -33,5 +44,17 @@ public class Movie {
 
     public MovieListingType getListingType() {
         return listingType;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public String getStills() {
+        return stills;
+    }
+
+    public String getSynopsis() {
+        return synopsis;
     }
 }

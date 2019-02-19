@@ -1,5 +1,3 @@
-insert into LANGUAGE (id, name) values (1, 'English');
-
 -- insert into MOVIE (name, experiences, listing_type, lang, image_name, stills, synopsis) values ('Iron Man 1', 'RDX, Dolby Atmos, SUB', 'NOW_SHOWING', 1, 'ironman1', 'ironman1_1, ironman1_2',
 --                     'When an industrialist is captured, he constructs a high-tech armoured suit to escape. Once he manages to escape, he decides to use his suit to fight against evil forces and save the world.');
 -- insert into MOVIE (name, experiences, listing_type, lang, image_name, stills, synopsis) values ('Iron Man 2', 'RDX, Dolby Atmos, SUB', 'NOW_SHOWING', 1, 'ironman2', 'ironman2_1, ironman2_2',

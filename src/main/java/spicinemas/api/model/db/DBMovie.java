@@ -8,7 +8,7 @@ public class DBMovie {
     private String name;
     private String experiences;
     private MovieListingType listingType;
-    private int lang;
+    private Language language;
     private String imageName;
     private String stills;
     private String synopsis;
@@ -45,12 +45,12 @@ public class DBMovie {
         this.listingType = listingType;
     }
 
-    public int getLang() {
-        return lang;
+    public Language getLanguage() {
+        return language;
     }
 
-    public void setLang(int lang) {
-        this.lang = lang;
+    public void setLanguage(Language language) {
+        this.language = language;
     }
 
     public String getImageName() {

@@ -1,4 +1,4 @@
-package spicinemas.api.model;
+package spicinemas.api.model.db;
 
 import spicinemas.api.type.Language;
 

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import spicinemas.api.model.Movie;
-import spicinemas.api.model.DBMovie;
+import spicinemas.api.model.db.DBMovie;
 
 import java.util.List;
 

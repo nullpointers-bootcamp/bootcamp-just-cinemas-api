@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import spicinemas.api.db.LanguageRepository;
 import spicinemas.api.db.MovieRepository;
 import spicinemas.api.model.Movie;
-import spicinemas.api.model.DBMovie;
+import spicinemas.api.model.db.DBMovie;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,7 +32,7 @@ public class MovieService {
         BeanUtils.copyProperties(m, movie);
         movie.setSlug(m.getName().toLowerCase().replace(" ", "-"));
         movie.setStills(Arrays.asList(m.getStills().split(",")));
-        movie.setLanguage(languageRepository.getLanguageMap().get(m.getLang()));
+        movie.setLanguage(languageRepository.getLanguageMap().get(m.getLanguage()));
         return movie;
     }
 

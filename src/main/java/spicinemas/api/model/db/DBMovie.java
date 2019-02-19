@@ -1,5 +1,6 @@
-package spicinemas.api.model;
+package spicinemas.api.model.db;
 
+import spicinemas.api.model.Language;
 import spicinemas.api.type.MovieListingType;
 
 public class DBMovie {

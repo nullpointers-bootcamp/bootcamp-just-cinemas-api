@@ -5,7 +5,7 @@ import org.jooq.impl.DSL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import spicinemas.api.model.DBLanguage;
+import spicinemas.api.model.db.DBLanguage;
 import spicinemas.api.type.Language;
 
 import java.util.HashMap;

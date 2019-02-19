@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import spicinemas.SpiCinemasApplication;
-import spicinemas.api.model.DBMovie;
+import spicinemas.api.model.db.DBMovie;
 
 import java.util.List;
 

@@ -1,31 +1,17 @@
 package spicinemas.api.model;
 
-import lombok.EqualsAndHashCode;
-import spicinemas.api.type.Language;
 import spicinemas.api.type.MovieListingType;
 
-import java.util.List;
+public class DBMovie {
 
-@EqualsAndHashCode(exclude = {"id"})
-public class Movie {
     private Long id;
-    private String slug;
     private String name;
     private String experiences;
     private MovieListingType listingType;
-    private Language language;
+    private int lang;
     private String imageName;
-    private List<String> stills;
+    private String stills;
     private String synopsis;
-
-    public Movie(String name, String experiences, MovieListingType listingType) {
-        this.name = name;
-        this.experiences = experiences;
-        this.listingType = listingType;
-    }
-
-    public Movie() {
-    }
 
     public Long getId() {
         return id;
@@ -33,14 +19,6 @@ public class Movie {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getSlug() {
-        return slug;
-    }
-
-    public void setSlug(String slug) {
-        this.slug = slug;
     }
 
     public String getName() {
@@ -67,12 +45,12 @@ public class Movie {
         this.listingType = listingType;
     }
 
-    public Language getLanguage() {
-        return language;
+    public int getLang() {
+        return lang;
     }
 
-    public void setLanguage(Language language) {
-        this.language = language;
+    public void setLang(int lang) {
+        this.lang = lang;
     }
 
     public String getImageName() {
@@ -83,11 +61,11 @@ public class Movie {
         this.imageName = imageName;
     }
 
-    public List<String> getStills() {
+    public String getStills() {
         return stills;
     }
 
-    public void setStills(List<String> stills) {
+    public void setStills(String stills) {
         this.stills = stills;
     }
 

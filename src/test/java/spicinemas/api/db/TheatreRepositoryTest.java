@@ -9,18 +9,19 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import spicinemas.SpiCinemasApplication;
 import spicinemas.api.model.db.DBScreen;
+import spicinemas.api.model.db.DBTheatre;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpiCinemasApplication.class)
 @ActiveProfiles("test")
-public class ScreenRepositoryTest {
+public class TheatreRepositoryTest {
 
     @Autowired
-    private ScreenRepository screenRepository;
+    private TheatreRepository theatreRepository;
 
     @Test
-    public void shouldReturnScreenForId() {
-        DBScreen screen = screenRepository.getScreenById(1);
-        Assert.assertEquals("Screen should be of id 1", "Screen 1", screen.getName());
+    public void shouldReturnShowsForId() {
+        DBTheatre dbTheatre = theatreRepository.getTheatreById(1);
+        Assert.assertEquals("Theatre should be PVR", "PVR", dbTheatre.getName());
     }
 }

@@ -24,13 +24,13 @@ public class ShowRepositoryTest {
     private ShowRepository showRepository;
 
     @Test
-    public void shouldReturnShowsForGivenDate() {
+    public void shouldReturnShowsForGivenDateAndMovieId() {
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(2019, Month.FEBRUARY.getValue(), 14);
         Date date = calendar.getTime();
-        List<DBShow> shows = showRepository.getShowsByDate(date);
-        Assert.assertEquals("Total no of shows should be 3", 3, shows.size());
+        List<DBShow> shows = showRepository.getShowsByDateAndMovieId(date, 1);
+        Assert.assertEquals("Total no of shows should be 3", 1, shows.size());
     }
 
     @Test

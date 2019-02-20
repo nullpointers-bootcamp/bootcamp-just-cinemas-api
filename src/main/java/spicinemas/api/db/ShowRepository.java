@@ -18,9 +18,9 @@ public class ShowRepository {
     @Autowired
     private DSLContext dslContext;
 
-    public List<DBShow> getShowsByDate(Date date) {
+    public List<DBShow> getShowsByDateAndMovieId(Date date, int movieId) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return dslContext.select().from(DSL.table("SHOW")).where(DSL.field("DATE").eq(sdf.format(date))).fetch().into(DBShow.class);
+        return dslContext.select().from(DSL.table("SHOW")).where(DSL.field("DATE").eq(sdf.format(date))).and(DSL.field("MOVIE_ID").eq(movieId)).fetch().into(DBShow.class);
     }
 
 

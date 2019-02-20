@@ -30,7 +30,7 @@ public class MovieService {
     private Movie transformDBMovieToMovie(DBMovie m) {
         Movie movie = new Movie();
         BeanUtils.copyProperties(m, movie);
-        movie.setSlug(m.getName().toLowerCase().replace(" ", "-"));
+        movie.setImageName(m.getImageName());
         movie.setStills(Arrays.asList(m.getStills().split(",")));
         movie.setLanguage(languageRepository.getLanguageMap().get(m.getLanguage()));
         return movie;

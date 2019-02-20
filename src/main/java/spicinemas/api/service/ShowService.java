@@ -6,6 +6,8 @@ import spicinemas.api.db.ScreenRepository;
 import spicinemas.api.db.ShowRepository;
 import spicinemas.api.db.TheatreRepository;
 import spicinemas.api.dto.ShowInformation;
+import spicinemas.api.exception.SeatsFullForShowException;
+import spicinemas.api.model.ShowSeatViewModel;
 import spicinemas.api.model.db.DBScreen;
 import spicinemas.api.model.db.DBShow;
 import spicinemas.api.model.db.DBTheatre;
@@ -45,5 +47,14 @@ public class ShowService {
         }
         return showInformationList;
 
+    }
+
+
+    public ShowSeatViewModel getShowSeatInformation(int showId) throws SeatsFullForShowException {
+        List<String> bookedSeats = showRepository.getSeatsBookedByShowId(showId);
+        DBScreen screen = screenRepository.getScreenByShowId(showId);
+        if(bookedSeats.size()== screen.getNumberOfColumns()* screen.getNumberOfRows())
+            throw new SeatsFullForShowException("Seats are full for this show");
+        return new ShowSeatViewModel(screen.getNumberOfRows(), screen.getNumberOfColumns(), bookedSeats.toArray(new String[0]));
     }
 }

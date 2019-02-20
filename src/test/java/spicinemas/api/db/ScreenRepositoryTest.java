@@ -23,4 +23,17 @@ public class ScreenRepositoryTest {
         DBScreen screen = screenRepository.getScreenById(1);
         Assert.assertEquals("Screen should be of id 1", "Screen 1", screen.getName());
     }
+
+    @Test
+    public void shouldNotReturnScreenInformationForWhenScreenNotFound() {
+        DBScreen screen = screenRepository.getScreenById(100);
+        Assert.assertEquals("Screen should be null", null, screen);
+    }
+
+    @Test
+    public void shouldReturnScreenInformationBasedOnShowId() {
+        DBScreen screen = screenRepository.getScreenByShowId(18);
+        Assert.assertEquals("Screen should be of id 1", "Screen 1", screen.getName());
+    }
+
 }

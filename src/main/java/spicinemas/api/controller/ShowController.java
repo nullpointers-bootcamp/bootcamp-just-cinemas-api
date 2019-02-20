@@ -2,11 +2,10 @@ package spicinemas.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import spicinemas.api.dto.ShowInformation;
+import spicinemas.api.exception.SeatsFullForShowException;
+import spicinemas.api.model.ShowSeatViewModel;
 import spicinemas.api.service.ShowService;
 
 import java.text.ParseException;
@@ -24,4 +23,9 @@ public class ShowController {
         return showService.getShowsByDateAndMovieId(date, movieId);
     }
 
+    @RequestMapping(value = "/shows/{id}/seats",
+            method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ShowSeatViewModel getSeatsByShow(@PathVariable("id")int id) throws SeatsFullForShowException {
+        return showService.getShowSeatInformation(id);
+    }
 }

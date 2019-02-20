@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import spicinemas.SpiCinemasApplication;
+import spicinemas.api.config.EmailService;
 import spicinemas.api.dto.BookingRequest;
 import spicinemas.api.dto.BookingResponse;
 import spicinemas.api.model.db.DBTransaction;
@@ -31,6 +32,9 @@ public class BookingServiceTest {
     @Mock
     TransactionRepository transactionRepository;
 
+    @Mock
+    EmailService emailService;
+
     @InjectMocks
     BookingService bookingService;
 
@@ -39,6 +43,7 @@ public class BookingServiceTest {
         DBTransaction transaction = new DBTransaction();
         transaction.setId(1);
         when(transactionRepository.getTransaction(anyString())).thenReturn(transaction);
+        when(emailService.sendMail(anyString(), anyString(), anyString())).thenReturn(true);
 
         BookingRequest bookingRequest = new BookingRequest();
         bookingRequest.setSeatNumbers(Arrays.asList(new String[]{"A1"}));
@@ -49,6 +54,7 @@ public class BookingServiceTest {
         String bookingRefNumber = bookingResponse.getBookingRefNumber();
 
         Assert.assertNotNull(bookingRefNumber);
+        verify(emailService, times(1)).sendMail(anyString(), anyString(), anyString());
         verify(transactionRepository, times(1)).saveTrasaction(any(DBTransaction.class));
         verify(transactionRepository, times(1)).saveTransactionSeats(anyListOf(DBTransactionSeat.class));
     }

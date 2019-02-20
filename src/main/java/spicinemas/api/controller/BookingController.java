@@ -7,6 +7,8 @@ import spicinemas.api.dto.BookingRequest;
 import spicinemas.api.dto.BookingResponse;
 import spicinemas.api.service.BookingService;
 
+import javax.validation.Valid;
+
 @RestController
 public class BookingController {
 
@@ -15,7 +17,7 @@ public class BookingController {
 
     @RequestMapping(value = "/booking",
             method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public BookingResponse getShowsByMovieAndDate(@RequestBody BookingRequest bookingRequest) {
+    public BookingResponse getShowsByMovieAndDate(@Valid @RequestBody BookingRequest bookingRequest) {
         return bookingService.bookTicket(bookingRequest);
     }
 }

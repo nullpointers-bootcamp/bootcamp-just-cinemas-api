@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import spicinemas.api.model.db.DBShow;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -19,8 +18,8 @@ public class ShowRepository {
     private DSLContext dslContext;
 
     public List<DBShow> getShowsByDateAndMovieId(Date date, int movieId) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return dslContext.select().from(DSL.table("SHOW")).where(DSL.field("DATE").eq(sdf.format(date))).and(DSL.field("MOVIE_ID").eq(movieId)).fetch().into(DBShow.class);
+        java.sql.Date dateSql = new java.sql.Date(date.getTime());
+        return dslContext.select().from(DSL.table("SHOW")).where(DSL.field("DATE").eq(dateSql)).and(DSL.field("MOVIE_ID").eq(movieId)).fetch().into(DBShow.class);
     }
 
 

@@ -4,7 +4,7 @@ public class DBScreen {
 
     private int id;
     private String name;
-    private int threatreId;
+    private int theatreId;
     private int numberOfRows;
     private int numberOfColumns;
 
@@ -24,12 +24,12 @@ public class DBScreen {
         this.name = name;
     }
 
-    public int getThreatreId() {
-        return threatreId;
+    public int getTheatreId() {
+        return theatreId;
     }
 
-    public void setThreatreId(int threatreId) {
-        this.threatreId = threatreId;
+    public void setTheatreId(int theatreId) {
+        this.theatreId = theatreId;
     }
 
     public int getNumberOfRows() {

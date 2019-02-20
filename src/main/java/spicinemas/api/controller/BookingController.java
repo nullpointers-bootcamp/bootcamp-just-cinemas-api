@@ -7,13 +7,13 @@ import spicinemas.api.dto.BookingRequest;
 import spicinemas.api.dto.BookingResponse;
 import spicinemas.api.service.BookingService;
 
-@RestController(value="/booking")
+@RestController
 public class BookingController {
 
     @Autowired
     BookingService bookingService;
 
-    @RequestMapping(value = "/",
+    @RequestMapping(value = "/booking",
             method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public BookingResponse getShowsByMovieAndDate(@RequestBody BookingRequest bookingRequest) {
         return bookingService.bookTicket(bookingRequest);

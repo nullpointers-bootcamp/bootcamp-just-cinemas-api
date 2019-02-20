@@ -35,8 +35,8 @@ public class ShowRepositoryTest {
 
     @Test
     public void shouldReturnShowsForId() {
-        DBShow show = showRepository.getShowdById(1);
-        Assert.assertEquals("Show should be of id 1", 1, show.getId());
+        DBShow show = showRepository.getShowdById(18);
+        Assert.assertEquals("Show should be of id 1", 18, show.getId());
     }
 
 }

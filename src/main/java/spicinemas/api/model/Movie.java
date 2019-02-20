@@ -35,14 +35,6 @@ public class Movie {
         this.id = id;
     }
 
-    public String getSlug() {
-        return slug;
-    }
-
-    public void setSlug(String slug) {
-        this.slug = slug;
-    }
-
     public String getName() {
         return name;
     }

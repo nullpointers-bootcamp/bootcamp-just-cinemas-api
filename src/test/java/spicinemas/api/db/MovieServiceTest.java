@@ -25,7 +25,7 @@ public class MovieServiceTest {
     public void shouldReturnMoviebyId() {
         long id = 1;
         Movie movie = movieService.getMovieById(id);
-        Assert.assertEquals("The movie name should be ", "Iron Man 1", movie.getName());
+        Assert.assertEquals("The movie name should be ", "Kabali", movie.getName());
 
     }
 

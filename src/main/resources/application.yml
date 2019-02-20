@@ -1,12 +1,12 @@
 server:
-  port: 9090
+ port: 9090
 
 security:
-  basic:
-    enabled: false
+ basic:
+  enabled: false
 
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/spicinemas
-    username: tarunabichandani
-    password:
+    username: spiuser
+    password: spiuser

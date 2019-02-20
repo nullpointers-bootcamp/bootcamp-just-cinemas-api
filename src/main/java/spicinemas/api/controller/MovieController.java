@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 public class MovieController {
     @Autowired
-    MovieService movieService;
+    private MovieService movieService;
 
     @RequestMapping(value = "/movies/now-showing",
             method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -27,5 +27,11 @@ public class MovieController {
             method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Movie getMovieById(@PathVariable long id) {
         return movieService.getMovieById(id);
+    }
+
+    @RequestMapping(value = "/movies/upcoming",
+            method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Movie> getUpComingMovies() {
+        return movieService.getUpComingMovies();
     }
 }

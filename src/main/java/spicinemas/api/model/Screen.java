@@ -4,14 +4,14 @@ import java.util.List;
 
 public class Screen {
     private String name;
-    private String screenExperience;
-    private String isActive;
+    private int numberOfRows;
+    private int numberOfColumns;
     private List<Show> shows;
 
-   public Screen(String name, String screenExperience, String isActive, List<Show> shows) {
+    public Screen(String name, int numberOfRows, int numberOfColumns, List<Show> shows) {
         this.name = name;
-        this.screenExperience = screenExperience;
-        this.isActive = isActive;
+        this.numberOfRows = numberOfRows;
+        this.numberOfColumns = numberOfColumns;
         this.shows = shows;
     }
 
@@ -19,12 +19,12 @@ public class Screen {
         return name;
     }
 
-    public String getScreenExperience() {
-        return screenExperience;
+    public int getNumberOfRows() {
+        return numberOfRows;
     }
 
-    public String getIsActive() {
-        return isActive;
+    public int getNumberOfColumns() {
+        return numberOfColumns;
     }
 
     public List<Show> getShows() {

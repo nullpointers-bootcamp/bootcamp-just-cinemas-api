@@ -14,6 +14,20 @@ public class DBMovie {
     private String stills;
     private String synopsis;
 
+    public DBMovie() {
+    }
+
+    public DBMovie(Long id, String name, String experiences, MovieListingType listingType, Language language, String imageName, String stills, String synopsis) {
+        this.id = id;
+        this.name = name;
+        this.experiences = experiences;
+        this.listingType = listingType;
+        this.language = language;
+        this.imageName = imageName;
+        this.stills = stills;
+        this.synopsis = synopsis;
+    }
+
     public Long getId() {
         return id;
     }

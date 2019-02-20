@@ -42,4 +42,11 @@ public class MovieService {
     }
 
 
+    public List<Movie> getUpComingMovies() {
+        List<Movie> movies = movieRepository.getUpcomingMovies().stream().map(m -> {
+            Movie movie = transformDBMovieToMovie(m);
+            return movie;
+        }).collect(Collectors.toList());
+        return movies;
+    }
 }

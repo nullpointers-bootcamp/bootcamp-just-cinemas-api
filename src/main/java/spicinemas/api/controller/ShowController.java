@@ -15,7 +15,7 @@ import java.util.List;
 public class ShowController {
 
     @Autowired
-    ShowService showService;
+    private ShowService showService;
 
     @RequestMapping(value = "/shows/show-information",
             method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

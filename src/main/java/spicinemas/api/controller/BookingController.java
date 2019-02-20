@@ -11,7 +11,7 @@ import spicinemas.api.service.BookingService;
 public class BookingController {
 
     @Autowired
-    BookingService bookingService;
+    private BookingService bookingService;
 
     @RequestMapping(value = "/booking",
             method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)

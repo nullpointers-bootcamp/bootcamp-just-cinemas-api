@@ -18,7 +18,8 @@ public class MovieRepository {
 
     public List<DBMovie> getNowShowingMovies() {
         return dsl.select()
-                .from(DSL.table("MOVIE"))
+                .from(DSL.table("MOVIE M"))
+                .where(DSL.field("listing_type").eq("NOW_SHOWING"))
                 .fetchInto(DBMovie.class);
     }
 
@@ -44,5 +45,12 @@ public class MovieRepository {
                 .where(DSL.field("MOVIE.ID").eq(id))
                 .fetchOne()
                 .into(DBMovie.class);
+    }
+
+    public List<DBMovie> getUpcomingMovies() {
+        return dsl.select()
+                .from(DSL.table("MOVIE M"))
+                .where(DSL.field("listing_type").eq("UPCOMING"))
+                .fetchInto(DBMovie.class);
     }
 }

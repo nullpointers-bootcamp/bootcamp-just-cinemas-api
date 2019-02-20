@@ -16,12 +16,12 @@ import java.util.List;
 public class ShowController {
 
     @Autowired
-    ShowService movieService;
+    ShowService showService;
 
     @RequestMapping(value = "/shows/show-information",
             method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<ShowInformation> getShowsByMovieAndDate(@RequestParam String date, @RequestParam int movieId) throws ParseException {
-        return movieService.getShowsByDateAndMovieId(date, movieId);
+        return showService.getShowsByDateAndMovieId(date, movieId);
     }
 
 }

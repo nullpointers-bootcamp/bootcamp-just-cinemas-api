@@ -3,8 +3,8 @@
 REST APIs exposed to perform operations required to manage ticket bookings for Just Cinemas
 
 # Technologies:
- ### Java 1.8
- ### PostGreSQL 11 DB
+ Java 1.8
+ PostGreSQL 11 DB
 
 # Libraries
  Spring Boot 1.4.1

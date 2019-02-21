@@ -3,17 +3,17 @@
 REST APIs exposed to perform operations required to manage ticket bookings for Just Cinemas
 
 # Technologies:
- Java 1.8
- PostGreSQL 11 DB
+ 1. Java 1.8
+ 2. PostGreSQL 11 DB
 
 # Libraries
- Spring Boot 1.4.1
- Flyway 4.0.3
- JOOQ 1.0.5
+ 1. Spring Boot 1.4.1
+ 2. Flyway 4.0.3
+ 3. JOOQ 1.0.5
 
 # Testing Frameworks
- Junit 4
- Mockito 1.10.19
+ 1. Junit 4
+ 2. Mockito 1.10.19
 
 # Project Setup
  1. Clone the repository

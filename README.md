@@ -20,9 +20,9 @@ REST APIs exposed to perform operations required to manage ticket bookings for J
  2. Setup the project using gradle
  3. Start a postGreSQL instance and create a database
  4. Change following properties in in application.yml to connect to your postgres instance:
-       spring.datasource.url
-       spring.datasource.username
-       spring.datasource.password
+       - spring.datasource.url
+       - spring.datasource.username
+       - spring.datasource.password
  5. To build the project run:
        ```./gradlew clean build```
  6. To run test locally run:

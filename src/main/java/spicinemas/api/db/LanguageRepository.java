@@ -36,4 +36,10 @@ public class LanguageRepository {
             languageMap = getAllLanguagesAsMap();
         return languageMap;
     }
+
+    public List<spicinemas.api.model.Language> getLanguage() {
+        return dsl.select()
+                .from(DSL.table("LANGUAGE"))
+                .fetchInto(spicinemas.api.model.Language.class);
+    }
 }

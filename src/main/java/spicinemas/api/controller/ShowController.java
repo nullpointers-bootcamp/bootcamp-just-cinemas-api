@@ -7,7 +7,6 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import spicinemas.api.dto.ShowInformation;
 import spicinemas.api.exception.SeatsFullForShowException;
-import spicinemas.api.model.Movie;
 import spicinemas.api.model.ShowSeatViewModel;
 import spicinemas.api.service.ShowService;
 

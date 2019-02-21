@@ -24,7 +24,7 @@ public class ShowController {
     @RequestMapping(value = "/shows/show-information",
             method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Api for getting shows by movie id and date", response = ShowInformation.class, responseContainer = "List")
-    public List<ShowInformation> getShowsByMovieAndDate(@RequestParam String date, @RequestParam int movieId) throws ParseException {
+    public List<ShowInformation> getShowsByMovieAndDate(@RequestParam String date, @RequestParam int movieId) throws ParseException, ScreenNotFoundException {
         return showService.getShowsByDateAndMovieId(date, movieId);
     }
 

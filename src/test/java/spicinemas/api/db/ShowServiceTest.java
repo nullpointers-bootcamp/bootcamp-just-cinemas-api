@@ -43,7 +43,7 @@ public class ShowServiceTest {
     ShowService showService;
 
     @Test
-    public void shouldShow() throws ParseException {
+    public void shouldShow() throws ParseException, ScreenNotFoundException {
         List<DBShow> shows = new ArrayList<>();
         DBShow show = new DBShow();
         show.setId(1);

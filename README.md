@@ -7,13 +7,13 @@ REST APIs exposed to perform operations required to manage ticket bookings for J
  ### PostGreSQL 11 DB
 
 # Libraries
- ### Spring Boot 1.4.1
- ### Flyway 4.0.3
- ### JOOQ 1.0.5
+ Spring Boot 1.4.1
+ Flyway 4.0.3
+ JOOQ 1.0.5
 
 # Testing Frameworks
- ### Junit 4
- ### Mockito 1.10.19
+ Junit 4
+ Mockito 1.10.19
 
 # Project Setup
  1. Clone the repository

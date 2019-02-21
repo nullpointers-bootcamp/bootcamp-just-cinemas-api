@@ -4,10 +4,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import spicinemas.api.model.Movie;
 import spicinemas.api.service.MovieService;
 
@@ -37,7 +34,11 @@ public class MovieController {
     @RequestMapping(value = "/movies/upcoming",
             method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Api for getting upcoming movies", response = Movie.class, responseContainer = "List")
-    public List<Movie> getUpComingMovies() {
-        return movieService.getUpComingMovies();
+    public List<Movie> getUpComingMovies(@RequestParam(value = "language", required = false) Integer languageId) {
+        if(languageId == null){
+            return movieService.getUpComingMovies();
+        } else {
+            return movieService.getUpComingMoviesByLanguage(languageId);
+        }
     }
 }

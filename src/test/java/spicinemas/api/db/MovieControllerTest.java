@@ -12,6 +12,7 @@ import spicinemas.SpiCinemasApplication;
 import spicinemas.api.controller.MovieController;
 import spicinemas.api.model.Movie;
 import spicinemas.api.service.MovieService;
+import spicinemas.api.type.Language;
 import spicinemas.api.type.MovieListingType;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class MovieControllerTest {
         movies.add(new Movie("Toy Story 1", "RDX", MovieListingType.UPCOMING));
         movies.add(new Movie("Toy Story 2", "RDX, ATMOS", MovieListingType.UPCOMING));
         when(movieService.getUpComingMovies()).thenReturn(movies);
-        List<Movie> movieList = movieController.getUpComingMovies();
+        List<Movie> movieList = movieController.getUpComingMovies(null);
         Assert.assertEquals("should return upcoming movies", 2, movieList.size());
         Assert.assertEquals("should return upcoming movies Toy Story 1", "Toy Story 1", movieList.get(0).getName());
         Assert.assertEquals("should return upcoming movies Toy Story 2", "Toy Story 2", movieList.get(1).getName());
@@ -45,7 +46,20 @@ public class MovieControllerTest {
     @Test
     public void shouldNotMoviesWhenThereAreNoUpComingMovies() {
         when(movieService.getUpComingMovies()).thenReturn(new ArrayList<>());
-        List<Movie> movieList = movieController.getUpComingMovies();
+        List<Movie> movieList = movieController.getUpComingMovies(null);
         Assert.assertEquals("should not return upcoming movies", 0, movieList.size());
+    }
+
+    @Test
+    public void shouldReturnUpComingMoviesByLanguage() {
+        List<Movie> movies = new ArrayList<>();
+        int id = 2;
+        movies.add(new Movie("Toy Story 1", MovieListingType.UPCOMING, Language.Tamil));
+        movies.add(new Movie("Toy Story 2", MovieListingType.UPCOMING, Language.Tamil));
+        when(movieService.getUpComingMoviesByLanguage(id)).thenReturn(movies);
+        List<Movie> movieList = movieController.getUpComingMovies(id);
+        Assert.assertEquals("should return upcoming movies", 2, movieList.size());
+        Assert.assertEquals("should return upcoming movies Toy Story 1", "Toy Story 1", movieList.get(0).getName());
+        Assert.assertEquals("should return upcoming movies Toy Story 2", "Toy Story 2", movieList.get(1).getName());
     }
 }

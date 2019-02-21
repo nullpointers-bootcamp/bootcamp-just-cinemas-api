@@ -23,12 +23,12 @@ public class MovieRepositoryTest {
     private MovieRepository movieRepo;
 
     @Autowired
-    DSLContext dslContext;
+    private DSLContext dslContext;
 
     @Before
     public void initialize()
     {
-        dslContext.delete(DSL.table("MOVIE")).where(DSL.field("ID").in(17,18)).execute();
+        dslContext.delete(DSL.table("MOVIE")).where(DSL.field("ID").in(16,17,18,19,20)).execute();
     }
     @Test
     public void shouldReturnAllMoviesWithListingTypeNowShowing(){
@@ -65,6 +65,26 @@ public class MovieRepositoryTest {
     public void shouldNotReturnAnyMoviesWhenThereAreNoUpComingMovies(){
         List<DBMovie> movies = movieRepo.getUpcomingMovies();
         Assert.assertEquals("Total upcoming movies should be 2",0, movies.size());
+    }
+    
+    @Test
+    public void shouldReturnMoviesWithListingTypeUpcomingByLanguage(){
+        int langId = 3;
+        dslContext.insertInto(DSL.table("MOVIE"), DSL.field("id"),DSL.field("name")
+                ,DSL.field("experiences"),DSL.field("listing_type"),
+                DSL.field("lang"),DSL.field("image_name"),DSL.field("stills"),DSL.field("synopsis"))
+                .values(17,"The Secret Life of Pets 2","RDX, Dolby Atmos, SUB","UPCOMING",3,"thesecretlifeofpets2","thesecretlifeofpets2_1, thesecretlifeofpets2_2","The Secret Life of Pets 2 will follow summer 2016s blockbuster about the lives our pets lead after we leave for work or school each day.")
+                .values(18,"The Secret Life of Pets 2","RDX, Dolby Atmos, SUB","UPCOMING",1,"thesecretlifeofpets2","thesecretlifeofpets2_1, thesecretlifeofpets2_2","The Secret Life of Pets 2 will follow summer 2016s blockbuster about the lives our pets lead after we leave for work or school each day.")
+                .execute();
+        List<DBMovie> movies = movieRepo.getUpcomingMoviesByLanguage(langId);
+        Assert.assertEquals("There should be 1 upcoming movies for the language id 3",1, movies.size());
+    }
+
+    @Test
+    public void shouldNotReturnAnyMoviesWhenThereAreNoUpComingMoviesForTheLanguage() {
+        int langId = 3;
+        List<DBMovie> movies = movieRepo.getUpcomingMoviesByLanguage(langId);
+        Assert.assertEquals("Total upcoming movies should be 0 for the language id 3",0, movies.size());
     }
 
 }

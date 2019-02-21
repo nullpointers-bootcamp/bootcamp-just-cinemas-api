@@ -24,6 +24,12 @@ public class Movie {
         this.listingType = listingType;
     }
 
+    public Movie(String name, MovieListingType listingType, Language language) {
+        this.name = name;
+        this.listingType = listingType;
+        this.language = language;
+    }
+
     public Movie() {
     }
 

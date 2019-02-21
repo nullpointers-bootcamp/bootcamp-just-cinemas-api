@@ -86,5 +86,31 @@ public class MovieServiceTest {
         Assert.assertEquals("Should fetch upcoming movies", 0, actualMovies.size());
     }
 
+    @Test
+    public void shouldReturnAllUpcomingMoviesByLanguage() {
+        List<DBMovie> movies = new ArrayList<>();
+        int id = 2;
+        movies.add(new DBMovie(1l,"Toy story 4","RDX, Dolby Atmos, SUB",MovieListingType.UPCOMING,new spicinemas.api.model.Language(2,"Tamil"),"toystory","toystory1,toystory2","A man attempts to protect his family from enemies, gained in his time as a gangster. After he is released from prison on false charges, he resumes his post as gang leader and continues a long-held rivalry."));
+        movies.add(new DBMovie(1l,"Toy story 4","RDX, Dolby Atmos, SUB",MovieListingType.UPCOMING,new spicinemas.api.model.Language(2,"Tamil"),"toystory","toystory1,toystory2","A man attempts to protect his family from enemies, gained in his time as a gangster. After he is released from prison on false charges, he resumes his post as gang leader and continues a long-held rivalry."));
+        when(movieRepository.getUpcomingMoviesByLanguage(Mockito.anyInt())).thenReturn(movies);
+        Map<Integer, Language> languageMap = new HashMap<>();
+        languageMap.put(2, Language.Tamil);
+        when(languageRepository.getLanguageMap()).thenReturn(languageMap);
+        List<Movie> actualMovies = movieService.getUpComingMoviesByLanguage(id);
+        Assert.assertEquals("Should fetch upcoming movies", 2, actualMovies.size());
+    }
+
+    @Test
+    public void shouldNotReturnUpComingMoviesWhenThereAreNoUpComingMoviesForTheGivenLanguage() {
+        List<DBMovie> movies = new ArrayList<>();
+        int id = 2;
+        when(movieRepository.getUpcomingMoviesByLanguage(Mockito.anyInt())).thenReturn(movies);
+        Map<Integer, Language> languageMap = new HashMap<>();
+        languageMap.put(2, Language.Tamil);
+        when(languageRepository.getLanguageMap()).thenReturn(languageMap);
+        List<Movie> actualMovies = movieService.getUpComingMoviesByLanguage(id);
+        Assert.assertEquals("Should fetch upcoming movies", 0, actualMovies.size());
+    }
+
 
 }

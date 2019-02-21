@@ -51,4 +51,12 @@ public class MovieRepository {
                 .where(DSL.field("listing_type").eq("UPCOMING"))
                 .fetchInto(DBMovie.class);
     }
+
+    public List<DBMovie> getUpcomingMoviesByLanguage(int id){
+        return dsl.select()
+                .from(DSL.table("MOVIE M"))
+                .where(DSL.field("listing_type").eq("UPCOMING"))
+                .and(DSL.field("lang").eq(id))
+                .fetchInto(DBMovie.class);
+    }
 }

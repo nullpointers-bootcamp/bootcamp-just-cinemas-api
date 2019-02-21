@@ -15,9 +15,9 @@ import java.util.stream.Collectors;
 @Service
 public class MovieService {
     @Autowired
-    MovieRepository movieRepository;
+    private MovieRepository movieRepository;
     @Autowired
-    LanguageRepository languageRepository;
+    private LanguageRepository languageRepository;
 
     public List<Movie> getNowShowingMovies() {
         List<Movie> movies = movieRepository.getNowShowingMovies().stream().map(m -> {
@@ -44,6 +44,14 @@ public class MovieService {
 
     public List<Movie> getUpComingMovies() {
         List<Movie> movies = movieRepository.getUpcomingMovies().stream().map(m -> {
+            Movie movie = transformDBMovieToMovie(m);
+            return movie;
+        }).collect(Collectors.toList());
+        return movies;
+    }
+
+    public List<Movie> getUpComingMoviesByLanguage(int id) {
+        List<Movie> movies = movieRepository.getUpcomingMoviesByLanguage(id).stream().map(m -> {
             Movie movie = transformDBMovieToMovie(m);
             return movie;
         }).collect(Collectors.toList());

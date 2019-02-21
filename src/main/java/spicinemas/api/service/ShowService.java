@@ -28,7 +28,7 @@ public class ShowService {
     @Autowired
     ScreenRepository screenRepository;
 
-    public List<ShowInformation> getShowsByDateAndMovieId(String date, int movieId) throws ParseException {
+    public List<ShowInformation> getShowsByDateAndMovieId(String date, int movieId) throws ParseException, ScreenNotFoundException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         List<DBShow> dbShows = showRepository.getShowsByDateAndMovieId(sdf.parse(date), movieId);
         List<ShowInformation> showInformationList = new ArrayList<>();
@@ -39,6 +39,8 @@ public class ShowService {
             showInformation.setTime(sdfTime.format(dbShow.getTime()));
             showInformation.setShowId(dbShow.getId());
             DBScreen screen = screenRepository.getScreenById(dbShow.getScreenId());
+            if (screen == null)
+                throw new ScreenNotFoundException("Screen could not be found");
             showInformation.setScreenId(screen.getId());
             showInformation.setScreenName(screen.getName());
             DBTheatre theatre = theatreRepository.getTheatreById(screen.getTheatreId());
@@ -54,9 +56,9 @@ public class ShowService {
     public ShowSeatViewModel getShowSeatInformation(int showId) throws SeatsFullForShowException, ScreenNotFoundException {
         List<String> bookedSeats = showRepository.getSeatsBookedByShowId(showId);
         DBScreen screen = screenRepository.getScreenByShowId(showId);
-        if(screen==null)
+        if (screen == null)
             throw new ScreenNotFoundException("Screen could not be found");
-        if(bookedSeats.size()== screen.getNumberOfColumns()* screen.getNumberOfRows())
+        if (bookedSeats.size() == screen.getNumberOfColumns() * screen.getNumberOfRows())
             throw new SeatsFullForShowException("Seats are full for this show");
         return new ShowSeatViewModel(screen.getNumberOfRows(), screen.getNumberOfColumns(), bookedSeats.toArray(new String[0]));
     }

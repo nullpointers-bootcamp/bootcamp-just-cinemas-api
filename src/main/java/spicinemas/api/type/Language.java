@@ -1,5 +1,5 @@
 package spicinemas.api.type;
 
 public enum Language {
-    English
+    English,Tamil,Telugu,Malayalam,Kannada,Hindi
 }

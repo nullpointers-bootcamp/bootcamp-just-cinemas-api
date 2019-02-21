@@ -37,3 +37,6 @@ REST APIs exposed to perform operations required to manage ticket bookings for J
    ```curl <your deployed ip address>/movies/now-showing``` If this print out json then your deployment has worked. Be aware, that the curl endpoint might take a while before it works. Track the API deployment via the cloudformation console.
  4. Get the IP address of the EC2 box created to host your API and provide update in the build stage of the UI project build. You can test
 
+#Swagger-Link
+ To refer the API documentation please hit the following link:
+ http://localhost:9090/swagger-ui.html

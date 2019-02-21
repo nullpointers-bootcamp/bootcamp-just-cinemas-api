@@ -6,6 +6,7 @@ import spicinemas.api.db.ScreenRepository;
 import spicinemas.api.db.ShowRepository;
 import spicinemas.api.db.TheatreRepository;
 import spicinemas.api.dto.ShowInformation;
+import spicinemas.api.exception.ScreenNotFoundException;
 import spicinemas.api.exception.SeatsFullForShowException;
 import spicinemas.api.model.ShowSeatViewModel;
 import spicinemas.api.model.db.DBScreen;
@@ -50,9 +51,11 @@ public class ShowService {
     }
 
 
-    public ShowSeatViewModel getShowSeatInformation(int showId) throws SeatsFullForShowException {
+    public ShowSeatViewModel getShowSeatInformation(int showId) throws SeatsFullForShowException, ScreenNotFoundException {
         List<String> bookedSeats = showRepository.getSeatsBookedByShowId(showId);
         DBScreen screen = screenRepository.getScreenByShowId(showId);
+        if(screen==null)
+            throw new ScreenNotFoundException("Screen could not be found");
         if(bookedSeats.size()== screen.getNumberOfColumns()* screen.getNumberOfRows())
             throw new SeatsFullForShowException("Seats are full for this show");
         return new ShowSeatViewModel(screen.getNumberOfRows(), screen.getNumberOfColumns(), bookedSeats.toArray(new String[0]));

@@ -25,7 +25,7 @@ public class TransactionRepository {
     }
 
     public DBTransaction getTransaction(String bookingRefNumber) {
-        return dslContext.select().from(DSL.table("TRANSACTION")).where(DSL.field("BOOKING_REF_NUMBER").eq(bookingRefNumber)).fetchOne().into(DBTransaction.class);
+        return dslContext.select().from(DSL.table("TRANSACTION")).where(DSL.field("BOOKING_REF_NUMBER").eq(bookingRefNumber)).fetchOneInto(DBTransaction.class);
     }
 
     public void saveTransactionSeats(List<DBTransactionSeat> dbSeats) {
@@ -37,6 +37,6 @@ public class TransactionRepository {
     }
 
     public List<DBTransactionSeat> getTransactionSeats(int transactionId) {
-        return dslContext.select().from(DSL.table("TRANSACTION_SEATS")).where(DSL.field("TRANSACTION_ID").eq(transactionId)).fetch().into(DBTransactionSeat.class);
+        return dslContext.select().from(DSL.table("TRANSACTION_SEATS")).where(DSL.field("TRANSACTION_ID").eq(transactionId)).fetchInto(DBTransactionSeat.class);
     }
 }

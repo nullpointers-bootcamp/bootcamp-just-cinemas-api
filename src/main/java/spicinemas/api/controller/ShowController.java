@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import spicinemas.api.dto.ShowInformation;
+import spicinemas.api.exception.ScreenNotFoundException;
 import spicinemas.api.exception.SeatsFullForShowException;
 import spicinemas.api.model.ShowSeatViewModel;
 import spicinemas.api.service.ShowService;
@@ -30,7 +31,7 @@ public class ShowController {
     @RequestMapping(value = "/shows/{id}/seats",
             method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Api for getting seats by show id", response = ShowSeatViewModel.class)
-    public ShowSeatViewModel getSeatsByShow(@PathVariable("id") int id) throws SeatsFullForShowException {
+    public ShowSeatViewModel getSeatsByShow(@PathVariable("id") int id) throws SeatsFullForShowException, ScreenNotFoundException {
         return showService.getShowSeatInformation(id);
     }
 }

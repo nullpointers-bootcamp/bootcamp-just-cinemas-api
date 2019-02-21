@@ -11,6 +11,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import spicinemas.SpiCinemasApplication;
 import spicinemas.api.dto.ShowInformation;
+import spicinemas.api.exception.ScreenNotFoundException;
 import spicinemas.api.exception.SeatsFullForShowException;
 import spicinemas.api.model.ShowSeatViewModel;
 import spicinemas.api.model.db.DBScreen;
@@ -74,7 +75,7 @@ public class ShowServiceTest {
     }
 
     @Test
-    public void shouldReturnBookedSeatsInformationForAShow() throws SeatsFullForShowException {
+    public void shouldReturnBookedSeatsInformationForAShow() throws SeatsFullForShowException, ScreenNotFoundException {
         DBScreen screen = new DBScreen();
         screen.setId(1);
         screen.setName("Screen 1");

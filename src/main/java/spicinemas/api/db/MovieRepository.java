@@ -34,8 +34,7 @@ public class MovieRepository {
         return dsl.select()
                 .from(DSL.table("MOVIE"))
                 .where(DSL.field("MOVIE.NAME").eq(name))
-                .fetchOne()
-                .into(DBMovie.class);
+                .fetchOneInto(DBMovie.class);
     }
 
 
@@ -43,8 +42,7 @@ public class MovieRepository {
         return dsl.select()
                 .from(DSL.table("MOVIE"))
                 .where(DSL.field("MOVIE.ID").eq(id))
-                .fetchOne()
-                .into(DBMovie.class);
+                .fetchOneInto(DBMovie.class);
     }
 
     public List<DBMovie> getUpcomingMovies() {

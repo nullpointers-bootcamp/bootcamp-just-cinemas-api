@@ -15,6 +15,6 @@ public class TheatreRepository {
     private DSLContext dslContext;
 
     public DBTheatre getTheatreById(int id) {
-        return dslContext.select().from(DSL.table("THEATRE")).where(DSL.field("ID").eq(id)).fetchOne().into(DBTheatre.class);
+        return dslContext.select().from(DSL.table("THEATRE")).where(DSL.field("ID").eq(id)).fetchOneInto(DBTheatre.class);
     }
 }

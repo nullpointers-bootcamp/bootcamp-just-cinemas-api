@@ -5,8 +5,15 @@ security:
  basic:
   enabled: false
 
+
+
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/spicinemas
+    url: jdbc:postgresql://localhost:5435/spicinemas
     username: spiuser
     password: spiuser
+
+
+mail:
+  smtp:
+    host: 10.134.20.38

@@ -9,3 +9,6 @@ spring:
     password: spiuser
 
 
+mail:
+  smtp:
+    host: 10.134.20.38

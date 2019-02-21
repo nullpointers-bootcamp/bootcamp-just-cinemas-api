@@ -26,7 +26,7 @@ public class BookingService {
     public BookingResponse bookTicket(BookingRequest bookingRequest) {
         DBTransaction transaction = new DBTransaction();
         BeanUtils.copyProperties(bookingRequest, transaction);
-        String bookingRefNumber = UUID.randomUUID().toString();
+        String bookingRefNumber = UUID.randomUUID().toString().substring(0, 6).toUpperCase();
         transaction.setBookingRefNumber(bookingRefNumber);
         transactionRepository.saveTrasaction(transaction);
         int transactionId = transactionRepository.getTransaction(bookingRefNumber).getId();

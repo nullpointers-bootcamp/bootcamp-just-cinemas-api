@@ -37,6 +37,13 @@ public class MovieRepositoryTest {
     }
 
     @Test
+    public void shouldReturnAllMoviesWithListingTypeNowShowingByLanguage(){
+        int langId = 2;
+        List<DBMovie> movies = movieRepo.getNowShowingMoviesByLanguage(langId);
+        Assert.assertEquals("Total now showing movies should be 3 for the language id 2",3, movies.size());
+    }
+
+    @Test
     public void shouldReturnAMovieByName(){
         DBMovie movie = movieRepo.getMovie("Iron Man 1");
         Assert.assertEquals("Get movie should return Iron Man 1","Iron Man 1", movie.getName());

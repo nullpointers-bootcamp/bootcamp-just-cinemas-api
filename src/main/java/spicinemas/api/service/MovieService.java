@@ -57,4 +57,12 @@ public class MovieService {
         }).collect(Collectors.toList());
         return movies;
     }
+
+    public List<Movie> getNowShowingMoviesByLanguage(int languageId) {
+        List<Movie> movies = movieRepository.getNowShowingMoviesByLanguage(languageId).stream().map(m -> {
+            Movie movie = transformDBMovieToMovie(m);
+            return movie;
+        }).collect(Collectors.toList());
+        return movies;
+    }
 }

@@ -64,6 +64,20 @@ public class MovieServiceTest {
     }
 
     @Test
+    public void shouldReturnNowShowingMoviesByLanguage() {
+        int languageId = 1;
+        List<DBMovie> movies = new ArrayList<>();
+        movies.add(new DBMovie(1l,"Toy story 4","RDX, Dolby Atmos, SUB",MovieListingType.NOW_SHOWING,new spicinemas.api.model.Language(1,"English"),"toystory","toystory1,toystory2","A man attempts to protect his family from enemies, gained in his time as a gangster. After he is released from prison on false charges, he resumes his post as gang leader and continues a long-held rivalry."));
+        movies.add(new DBMovie(1l,"Toy story 3","RDX, Dolby Atmos, SUB",MovieListingType.NOW_SHOWING,new spicinemas.api.model.Language(1,"English"),"toystory","toystory1,toystory2","A man attempts to protect his family from enemies, gained in his time as a gangster. After he is released from prison on false charges, he resumes his post as gang leader and continues a long-held rivalry."));
+        when(movieRepository.getNowShowingMoviesByLanguage(languageId)).thenReturn(movies);
+        Map<Integer, Language> languageMap = new HashMap<>();
+        languageMap.put(1, Language.English);
+        when(languageRepository.getLanguageMap()).thenReturn(languageMap);
+        List<Movie> actualMovies = movieService.getNowShowingMoviesByLanguage(languageId);
+        Assert.assertEquals("Should fetch now showing movies", 2, actualMovies.size());
+    }
+
+    @Test
     public void shouldReturnAllUpComingMovies() {
         List<DBMovie> movies = new ArrayList<>();
         movies.add(new DBMovie(1l,"Toy story 4","RDX, Dolby Atmos, SUB",MovieListingType.UPCOMING,new spicinemas.api.model.Language(1,"English"),"toystory","toystory1,toystory2","A man attempts to protect his family from enemies, gained in his time as a gangster. After he is released from prison on false charges, he resumes his post as gang leader and continues a long-held rivalry."));

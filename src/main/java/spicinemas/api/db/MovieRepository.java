@@ -59,4 +59,12 @@ public class MovieRepository {
                 .and(DSL.field("lang").eq(id))
                 .fetchInto(DBMovie.class);
     }
+
+    public List<DBMovie> getNowShowingMoviesByLanguage(int languagId) {
+        return dsl.select()
+                .from(DSL.table("MOVIE M"))
+                .where(DSL.field("listing_type").eq("NOW_SHOWING"))
+                .and(DSL.field("lang").eq(languagId))
+                .fetchInto(DBMovie.class);
+    }
 }

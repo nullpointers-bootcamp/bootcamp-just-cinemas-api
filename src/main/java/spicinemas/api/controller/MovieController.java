@@ -19,8 +19,13 @@ public class MovieController {
     @RequestMapping(value = "/movies/now-showing",
             method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Api for getting now showing movies", response = Movie.class, responseContainer = "List")
-    public List<Movie> getNowShowingMovies() {
-        return movieService.getNowShowingMovies();
+    public List<Movie> getNowShowingMovies(@RequestParam(value = "language", required = false) Integer languageId) {
+        if(null == languageId){
+            return movieService.getNowShowingMovies();
+        }else {
+            return movieService.getNowShowingMoviesByLanguage(languageId);
+        }
+
     }
 
 

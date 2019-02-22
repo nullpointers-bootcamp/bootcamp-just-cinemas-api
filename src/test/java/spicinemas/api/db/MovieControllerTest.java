@@ -44,6 +44,30 @@ public class MovieControllerTest {
     }
 
     @Test
+    public void shouldReturnAllNowShowingMovies() {
+        List<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("Toy Story 1", "RDX", MovieListingType.NOW_SHOWING));
+        movies.add(new Movie("Toy Story 2", "RDX, ATMOS", MovieListingType.NOW_SHOWING));
+        when(movieService.getNowShowingMovies()).thenReturn(movies);
+        List<Movie> movieList = movieController.getNowShowingMovies(null);
+        Assert.assertEquals("should return upcoming movies", 2, movieList.size());
+        Assert.assertEquals("should return upcoming movies Toy Story 1", "Toy Story 1", movieList.get(0).getName());
+        Assert.assertEquals("should return upcoming movies Toy Story 2", "Toy Story 2", movieList.get(1).getName());
+    }
+    @Test
+    public void shouldReturnAllNowShowingMoviesByLanguage() {
+        List<Movie> movies = new ArrayList<>();
+        int id = 1;
+        movies.add(new Movie("Toy Story 1", MovieListingType.NOW_SHOWING, Language.English));
+        movies.add(new Movie("Toy Story 2", MovieListingType.NOW_SHOWING, Language.English));
+        when(movieService.getNowShowingMoviesByLanguage(id)).thenReturn(movies);
+        List<Movie> movieList = movieController.getNowShowingMovies(id);
+        Assert.assertEquals("should return upcoming movies", 2, movieList.size());
+        Assert.assertEquals("should return upcoming movies Toy Story 1", "Toy Story 1", movieList.get(0).getName());
+        Assert.assertEquals("should return upcoming movies Toy Story 2", "Toy Story 2", movieList.get(1).getName());
+    }
+
+    @Test
     public void shouldNotMoviesWhenThereAreNoUpComingMovies() {
         when(movieService.getUpComingMovies()).thenReturn(new ArrayList<>());
         List<Movie> movieList = movieController.getUpComingMovies(null);
